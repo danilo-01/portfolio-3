@@ -3,9 +3,11 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 import styled from "styled-components";
 import { StyledH1 } from "./common_components";
+import { useRouteChange } from "./helpers/hooks";
 
 const Navbar = () => {
-  const [navbarOpen, setNavbarOpen] = useState<boolean>(true);
+  const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
+
   const handletoggleNavbar = () => {
     setNavbarOpen((prevState) => !prevState);
   };
@@ -34,6 +36,30 @@ type navbardropdownType = {
 };
 
 const Navbardropdown = ({ active, handletoggleNavbar }: navbardropdownType) => {
+  const changeRoute = useRouteChange();
+
+  const siteLinks = [
+    {
+      page: "Home",
+      url: "/",
+    },
+    {
+      page: "About Me",
+      url: "/about",
+    },
+    {
+      page: "Projects",
+      url: "/projects",
+    },
+    {
+      page: "My Music",
+      url: "/music",
+    },
+    {
+      page: "Resume",
+      url: "",
+    },
+  ];
   return (
     <NavbarDropdownWrapper onClick={handletoggleNavbar} active={active}>
       <NavbarDropdownCloseWrapper>
@@ -41,14 +67,17 @@ const Navbardropdown = ({ active, handletoggleNavbar }: navbardropdownType) => {
       </NavbarDropdownCloseWrapper>
       <StyledH1>NAVIGATION</StyledH1>
       <NavbarDropdownMenu>
+        {siteLinks.map((link) => {
+          return (
+            <>
+              <MenuDivider />
+              <MenuText onClick={() => changeRoute(link.url)}>
+                {link.page}
+              </MenuText>
+            </>
+          );
+        })}
         <MenuDivider />
-        <MenuText>Home</MenuText>
-        <MenuDivider />
-        <MenuText>About Me</MenuText>
-        <MenuDivider />
-        <MenuText>Projects</MenuText>
-        <MenuDivider />
-        <MenuText>My Music</MenuText>
       </NavbarDropdownMenu>
     </NavbarDropdownWrapper>
   );
@@ -72,7 +101,7 @@ const NavbarDropdownWrapper = styled.div<navbardropdownType>`
   align-items: center;
   flex-direction: column;
   background-color: #1e1e1e;
-  height: 80%;
+
   width: 100%;
   top: 0;
   left: 0;

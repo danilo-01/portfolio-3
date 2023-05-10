@@ -2,8 +2,8 @@ import { AiFillGithub, AiFillLinkedin } from "react-icons/ai";
 import { BsSpotify } from "react-icons/bs";
 import { IoMdMail } from "react-icons/io";
 import styled from "styled-components";
-import { primaryColor } from "../styles";
-import { StyledH1 } from "../common_components";
+import { fadeInTransition } from "../styles";
+import { ColumnPageWrapper, StyledH1 } from "../common_components";
 import { navigateExternal } from "../helpers/functions";
 
 const Home = () => {
@@ -14,11 +14,11 @@ const Home = () => {
       url: "https://github.com/danilo-01",
     },
     {
-      icon: <BsSpotify color="white" size={iconSize} />,
+      icon: <BsSpotify color="#1db954" size={iconSize} />,
       url: "https://open.spotify.com/artist/7Er2vexJITtR4plcfRGcdt",
     },
     {
-      icon: <AiFillLinkedin color="white" size={iconSize} />,
+      icon: <AiFillLinkedin color="#0077B5" size={iconSize} />,
       url: "https://www.linkedin.com/in/danilo-costilla-19554b16a/",
     },
     {
@@ -56,29 +56,22 @@ const Home = () => {
 
 export default Home;
 
-const HomepageWrapper = styled.div`
-  background-color: ${primaryColor};
-  display: flex;
-  flex-direction: column;
-
-  height: 100vh;
-  width: 100%;
-`;
+const HomepageWrapper = styled(ColumnPageWrapper)``;
 
 const HomepageHeaders = styled.div`
   margin: 6rem auto 1rem auto;
+  ${fadeInTransition}
 `;
 
 const HomeHeader = styled(StyledH1)`
   width: 346px;
-  height: 115px;
+  margin-bottom: 0;
 `;
 
 const HomeSubHeader = styled.h2`
   /* Software Engineer */
 
   width: 346px;
-  height: 32px;
 
   font-family: "Roboto";
   font-style: italic;
