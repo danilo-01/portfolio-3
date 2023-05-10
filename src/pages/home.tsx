@@ -4,6 +4,7 @@ import { IoMdMail } from "react-icons/io";
 import styled from "styled-components";
 import { primaryColor } from "../styles";
 import { StyledH1 } from "../common_components";
+import { navigateExternal } from "../helpers/functions";
 
 const Home = () => {
   const iconSize = 40;
@@ -41,7 +42,11 @@ const Home = () => {
       <HomepageBottomLinks>
         {bottomLinkIcons.map((icon) => {
           return (
-            <HomepageBottomLinkWrapper>{icon.icon}</HomepageBottomLinkWrapper>
+            <HomepageBottomLinkWrapper
+              onClick={() => navigateExternal(icon.url)}
+            >
+              {icon.icon}
+            </HomepageBottomLinkWrapper>
           );
         })}
       </HomepageBottomLinks>
