@@ -3,7 +3,7 @@ import { ColumnPageWrapper, StyledH1 } from "../common_components";
 import styled from "styled-components";
 import { fadeInTransition } from "../styles";
 import { showcasedTracks } from "../showcased-tracks";
-import { IoMdMail } from "react-icons/io";
+
 import { BsSpotify } from "react-icons/bs";
 import { navigateExternal } from "../helpers/functions";
 
