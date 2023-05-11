@@ -16,7 +16,7 @@ export const StyledH1 = styled.h1`
 `;
 
 export const ColumnPageWrapper = styled.div`
-  height: 100vh;
+  height: 100%h;
   width: 100%;
 
   background-color: ${primaryColor};
