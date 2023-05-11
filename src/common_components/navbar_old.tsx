@@ -1,5 +1,5 @@
 // Packages
-import React, { useContext, useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosClose } from "react-icons/io";
@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 
 // Custom
 
-import { disablePageScroll, navigateExternal } from "../helpers/functions";
+import { disablePageScroll } from "../helpers/functions";
 import { CSS_noSelect } from "../helpers/css_snippets";
 import { useRouteChange, useDetectRouteChange } from "../helpers/hooks";
 import StyledButton from "./styled-button";
