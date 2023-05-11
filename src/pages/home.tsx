@@ -5,8 +5,12 @@ import styled from "styled-components";
 import { fadeInTransition } from "../styles";
 import { ColumnPageWrapper, StyledH1 } from "../common_components";
 import { navigateExternal } from "../helpers/functions";
+import { siteLinks } from "../site-links";
+import { useRouteChange } from "../helpers/hooks";
 
 const Home = () => {
+  const changeRoute = useRouteChange();
+
   const iconSize = 40;
   const bottomLinkIcons = [
     {
@@ -34,10 +38,15 @@ const Home = () => {
         <HomeSubHeader>Software Engineer</HomeSubHeader>
       </HomepageHeaders>
       <HomepageNavigation>
-        <HomepageNavigationText>About Me</HomepageNavigationText>
-        <HomepageNavigationText>Projects</HomepageNavigationText>
-        <HomepageNavigationText>My Music</HomepageNavigationText>
-        <HomepageNavigationText>Resume</HomepageNavigationText>
+        {siteLinks.map((link) => {
+          return link.page === "Home" ? (
+            ""
+          ) : (
+            <HomepageNavigationText onClick={() => changeRoute(link.url)}>
+              {link.page}
+            </HomepageNavigationText>
+          );
+        })}
       </HomepageNavigation>
       <HomepageBottomLinks>
         {bottomLinkIcons.map((icon) => {
@@ -97,9 +106,9 @@ const HomepageNavigationText = styled.h3`
   font-weight: 300;
   font-size: 32px;
   margin: 1rem 0;
-  box-shadow: 1px 1px 8px 1px black;
+  /* box-shadow: 1px 1px 8px 1px black; */
   padding: 0.3rem 0.5rem;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   background-color: "#1e1e1e97";
 
   /* identical to box height */

@@ -4,8 +4,10 @@ import { AiOutlineClose } from "react-icons/ai";
 import styled from "styled-components";
 import { StyledH1 } from "./common_components";
 import { useRouteChange } from "./helpers/hooks";
+import { siteLinks } from "./site-links";
 
 const Navbar = () => {
+  const changeRoute = useRouteChange();
   const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
 
   const handletoggleNavbar = () => {
@@ -18,7 +20,7 @@ const Navbar = () => {
         handletoggleNavbar={handletoggleNavbar}
       />
 
-      <NavbarLogoWrapper>
+      <NavbarLogoWrapper onClick={() => changeRoute("/")}>
         <h1>D</h1>
       </NavbarLogoWrapper>
       <NavbarMenuWrapper onClick={handletoggleNavbar}>
@@ -38,28 +40,6 @@ type navbardropdownType = {
 const Navbardropdown = ({ active, handletoggleNavbar }: navbardropdownType) => {
   const changeRoute = useRouteChange();
 
-  const siteLinks = [
-    {
-      page: "Home",
-      url: "/",
-    },
-    {
-      page: "About Me",
-      url: "/about",
-    },
-    {
-      page: "Projects",
-      url: "/projects",
-    },
-    {
-      page: "My Music",
-      url: "/music",
-    },
-    {
-      page: "Resume",
-      url: "",
-    },
-  ];
   return (
     <NavbarDropdownWrapper onClick={handletoggleNavbar} active={active}>
       <NavbarDropdownCloseWrapper>
